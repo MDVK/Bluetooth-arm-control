@@ -1,0 +1,69 @@
+char BT;
+
+int  NU = 2; 
+int  ND = 3;
+int CCW = 4;
+int CW = 5;
+int PU = 6;
+int PD = 7;
+int SK = 8;
+int SN = 9;
+int MON = 11;
+int MOFF = 10;
+
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(NU, OUTPUT);
+  pinMode(ND, OUTPUT);
+  pinMode(CCW, OUTPUT);
+  pinMode(CW, OUTPUT);
+  pinMode(PU, OUTPUT);
+  pinMode(PD, OUTPUT);
+  pinMode(SK, OUTPUT);
+  pinMode(SN, OUTPUT);  
+  //pinMode(MON, OUTPUT);
+  //pinMode(MOFF, OUTPUT);
+  
+  digitalWrite (NU, LOW);
+  digitalWrite (ND, LOW);
+  digitalWrite (CCW, LOW);
+  digitalWrite (CW, LOW);
+  digitalWrite (PU, LOW);
+  digitalWrite(PD, LOW);
+  digitalWrite(SK, LOW);
+  digitalWrite(SN, LOW); 
+} 
+
+void loop() {
+  BT = Serial.read();       
+  Serial.println(BT);
+  while (!Serial.available());   
+
+  digitalWrite (NU, LOW);
+  digitalWrite (ND, LOW);
+  digitalWrite (CCW, LOW);
+  digitalWrite (CW, LOW);
+  digitalWrite (PU, LOW);
+  digitalWrite(PD, LOW);
+  digitalWrite(SK, LOW);
+  digitalWrite(SN, LOW); 
+  //digitalWrite(MON, LOW);
+  //digitalWrite(MOFF, LOW);
+
+  if ( BT == '0') { digitalWrite(NU, HIGH);} 
+  if ( BT == '1') { digitalWrite(ND, HIGH); } 
+  if ( BT == '2') { digitalWrite(CCW, HIGH); }
+  if ( BT == '3') { digitalWrite(CW, HIGH); }
+  if ( BT == '4') { digitalWrite(PU, HIGH); }
+  if ( BT == '5') { digitalWrite(PD, HIGH); }
+  if ( BT == '6') { digitalWrite(SK, HIGH); }
+  if ( BT == '7') { digitalWrite(SN, HIGH); }
+  else {delay (1);}
+  // if ( BT == '8') { digitalWrite(MON, HIGH); } fix motor control
+  //if ( BT == '9') { digitalWrite(MOFF, HIGH); } add in motor stop
+  // VAR for motor stop goes here (also update app) 
+  delay (100);
+  
+}
+  
